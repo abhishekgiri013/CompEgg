@@ -6,7 +6,10 @@ export const Header = () => {
     <div className='bg-[#313030] text-white '>
       <div className='flex justify-between items-center  max-w-7xl mx-auto p-3'>
         <Link to= "/">
-      <h1 className='font-bold'>CompEgg</h1>
+          <div className='flex items-center gap-2'>
+          <img src="egg.svg" alt="egg" className='w-8' />
+          <h1 className='font-bold'>CompEgg</h1>
+          </div>
       </Link>
       <ul className='flex gap-4'>
         <Link to="/">
