@@ -3,7 +3,7 @@ import React from 'react'
 
 export const Header = () => {
   return (
-    <div className='bg-[#313030] text-white '>
+    <div className='sticky top-0 bg-[#313030] text-[#f8c55d] shadow-md z-50'>
       <div className='flex justify-between items-center  max-w-7xl mx-auto p-3'>
         <Link to= "/">
           <div className='flex items-center gap-2'>
