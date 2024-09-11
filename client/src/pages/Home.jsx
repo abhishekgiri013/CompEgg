@@ -60,7 +60,7 @@ export const Home = () => {
             Track your progress across LeetCode, GeeksforGeeks, Codeforces, and HackerRank in real-time.
           </motion.p>
           <motion.button
-            className="bg-[#f8c55d] text-[#1c1c1b] px-6 py-3 rounded-md hover:bg-[#f7d185]"
+            className="text-[#f7d185] font-bold bg-[#f7d185] bg-opacity-30 px-6 py-3 rounded-md hover:bg-opacity-50"
             variants={heroVariants.button}
             transition={{ duration: 0.8 }}
           >
