@@ -5,6 +5,7 @@ import { SignIn } from './pages/SignIn';
 import { SignUp } from './pages/SignUp';
 import { Header } from './componets/Header';
 
+
 const App = () => {
   return (
    <BrowserRouter>
@@ -13,6 +14,7 @@ const App = () => {
          <Route path='/' element ={<Home/>}/>
          <Route path='/sign-in' element ={<SignIn/>}/>
          <Route path='/sign-up' element ={<SignUp/>}/>
+        
          
       </Routes>
    </BrowserRouter>
