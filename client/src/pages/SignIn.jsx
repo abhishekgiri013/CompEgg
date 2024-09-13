@@ -41,13 +41,13 @@ export const SignIn = () => {
   };
   return (
     <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-7"> Sign In</h1>
+      <h1 className="text-[#f8c55d] text-3xl font-semibold text-center my-7"> Sign In</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="text"
           placeholder="Email"
           id="email"
-          className="bg-slate-100 p-3 rounded-lg"
+          className="bg-[#E0E0E0] text-[#121212] p-3 rounded-lg"
           onChange={handleChange}
         />
 
@@ -55,14 +55,13 @@ export const SignIn = () => {
           type="password"
           placeholder="Password"
           id="password"
-          className="bg-slate-100 p-3 rounded-lg"
+          className="bg-[#E0E0E0] text-[#121212] p-3 rounded-lg"
           onChange={handleChange}
         />
 
         <button
           disabled={loading}
-          className="bg-[#000000] text-white rounded-lg p-3 uppercase hover:opacity-90
-        disabled:opacity-40"
+          className="text-[#f7d185] font-bold bg-[#f7d185] bg-opacity-30 px-6 py-3 rounded-md hover:bg-opacity-50"
         >
           {loading ? "Loading..." : "Sign In"}
         </button>
@@ -70,10 +69,10 @@ export const SignIn = () => {
       <div className="flex gap-2 mt-5">
         <p>Don&#39;t have an account?</p>
         <Link to="/sign-up">
-          <span className="text-blue-400">Sign Up</span>
+          <span className="text-[#f7d185]">Sign Up</span>
         </Link>
       </div>
-      <p className="text-red-700">
+      <p className="text-red-600">
         {error ? error.message || "Something went wrong" : ""}
       </p>
     </div>

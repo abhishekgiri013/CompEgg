@@ -37,20 +37,20 @@ export const SignUp = () => {
   };
   return (
     <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-7"> Sign Up</h1>
+      <h1 className="text-[#f7d185] text-3xl font-semibold text-center my-7"> Sign Up</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="text"
           placeholder="Username"
           id="username"
-          className="bg-slate-100 p-3 rounded-lg"
+          className="bg-[#E0E0E0] text-[#121212] p-3 rounded-lg"
           onChange={handleChange}
         />
         <input
           type="text"
           placeholder="Email"
           id="email"
-          className="bg-slate-100 p-3 rounded-lg"
+          className="bg-[#E0E0E0] text-[#121212] p-3 rounded-lg"
           onChange={handleChange}
         />
 
@@ -58,14 +58,13 @@ export const SignUp = () => {
           type="password"
           placeholder="Password"
           id="password"
-          className="bg-slate-100 p-3 rounded-lg"
+          className="bg-[#E0E0E0] text-[#121212] p-3 rounded-lg"
           onChange={handleChange}
         />
 
         <button
           disabled={loading}
-          className="bg-[#000000] text-white rounded-lg p-3 uppercase hover:opacity-90
-        disabled:opacity-40"
+          className="text-[#f7d185] font-bold bg-[#f7d185] bg-opacity-30 px-6 py-3 rounded-md hover:bg-opacity-50"
         >
           {loading ? "Loading..." : "Sign up"}
         </button>
@@ -73,10 +72,10 @@ export const SignUp = () => {
       <div className="flex gap-2 mt-5">
         <p>Have an account?</p>
         <Link to="/sign-in">
-          <span className="text-blue-400">Sign In</span>
+          <span className="text-[#f7d185]">Sign In</span>
         </Link>
       </div>
-      <p className="text-red-700">{error && "Something went wrong"}</p>
+      <p className="text-red-600">{error && "Something went wrong"}</p>
     </div>
   );
 };
