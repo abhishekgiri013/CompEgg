@@ -43,14 +43,14 @@ export const SignUp = () => {
           type="text"
           placeholder="Username"
           id="username"
-          className="bg-[#E0E0E0] text-[#121212] p-3 rounded-lg"
+          className="bg-[#E0E0E0] outline-none text-[#121212] p-3 rounded-lg"
           onChange={handleChange}
         />
         <input
           type="text"
           placeholder="Email"
           id="email"
-          className="bg-[#E0E0E0] text-[#121212] p-3 rounded-lg"
+          className="bg-[#E0E0E0] outline-none text-[#121212] p-3 rounded-lg"
           onChange={handleChange}
         />
 
@@ -58,7 +58,7 @@ export const SignUp = () => {
           type="password"
           placeholder="Password"
           id="password"
-          className="bg-[#E0E0E0] text-[#121212] p-3 rounded-lg"
+          className="bg-[#E0E0E0] outline-none text-[#121212] p-3 rounded-lg"
           onChange={handleChange}
         />
 
