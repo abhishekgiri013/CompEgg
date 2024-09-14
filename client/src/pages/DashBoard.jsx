@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from "react-redux";
+
 
 const Dashboard = ({ name = 'user' }) => {
   // States for individual platform data
@@ -124,12 +126,12 @@ const Dashboard = ({ name = 'user' }) => {
       return { platform: 'HackerRank', data: { totalSolved: 0 } };
     }
   };
-
+  const {currentUser} = useSelector(state =>state.user);
   return (
     <div className="bg-[#1c1c1b] text-[#E0E0E0] min-h-screen p-10">
       <div className="text-center mb-10">
-        <h1 className="text-5xl font-bold text-yellow-500">Hi, {name}</h1>
-        <p className="text-lg text-[#E0E0E0] mt-2">Let’s track your coding journey and see your growth.</p>
+        <h1 className="text-5xl font-bold text-yellow-500">Hi, {currentUser.username}</h1>
+        <p className="text-lg text-[#E0E0E0] mt-2">Let us track your coding journey and see your growth.</p>
       </div>
 
       {!isDataFetched && (

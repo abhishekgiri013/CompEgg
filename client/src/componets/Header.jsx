@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 export const Header = () => {
+  const {currentUser} = useSelector(state => state.user);
   return (
     <div className='sticky top-0 bg-[#313030] text-[#f8c55d] shadow-md z-50'>
       <div className='flex justify-between items-center  max-w-7xl mx-auto p-3'>
@@ -18,8 +20,13 @@ export const Header = () => {
           <Link to="/">
             <li>Home</li>
           </Link>
-          <Link to="/sign-in">
+          <Link to="/profile">
+          { currentUser ? (
+            <img src={currentUser.profilePicture} alt='profile' className='h-7 w-7 rounded-full object-cover'/>
+          ):(
+
             <li>Sign In</li>
+          )}
           </Link>
         </ul>
       </div>
