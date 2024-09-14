@@ -6,6 +6,7 @@ import { SignUp } from './pages/SignUp';
 import { Header } from './componets/Header';
 import Dashboard from './pages/DashBoard';
 
+
 const App = () => {
   return (
    <BrowserRouter>
