@@ -7,6 +7,7 @@ import {
   apiVariants,
   footerVariants,
 } from '../animations/variants';
+import { useNavigate } from 'react-router-dom';
 
 const useInView = (options) => {
   const [inView, setInView] = useState(false);
@@ -32,6 +33,11 @@ export const Home = () => {
   const [refHowItWorks, inViewHowItWorks] = useInView({ threshold: 0.5 });
   const [refAPI, inViewAPI] = useInView({ threshold: 0.5 });
   const [refFooter, inViewFooter] = useInView({ threshold: 0.5 });
+  const navigate = useNavigate();
+
+  const handleTrackProgress = () => {
+    navigate('/dashboard'); // Navigate to /dashboard route
+  };
 
   return (
     <div className="bg-[#1c1c1b] text-[#E0E0E0] font-sans">
@@ -46,7 +52,7 @@ export const Home = () => {
       >
         <motion.div variants={heroVariants.content}>
           <motion.h1
-            className="text-5xl font-bold text-[#f8c55d] mb-6"
+            className="text-5xl font-bold text-[#f7d185] mb-6"
             variants={heroVariants.title}
             transition={{ duration: 0.8 }}
           >
@@ -63,6 +69,7 @@ export const Home = () => {
             className="text-[#f7d185] font-bold bg-[#f7d185] bg-opacity-30 px-6 py-3 rounded-md hover:bg-opacity-50"
             variants={heroVariants.button}
             transition={{ duration: 0.8 }}
+            onClick={handleTrackProgress}
           >
             Track My Progress
           </motion.button>

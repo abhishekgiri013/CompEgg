@@ -7,9 +7,11 @@ export const SignUp = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -23,7 +25,6 @@ export const SignUp = () => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      console.log(data);
       setLoading(false);
 
       if (data.success === false) {
@@ -36,9 +37,10 @@ export const SignUp = () => {
       setError(true);
     }
   };
+
   return (
     <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-[#f7d185] text-3xl font-semibold text-center my-7"> Sign Up</h1>
+      <h1 className="text-[#f7d185] text-3xl font-semibold text-center my-7">Sign Up</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="text"
@@ -54,7 +56,6 @@ export const SignUp = () => {
           className="bg-[#E0E0E0] outline-none text-[#121212] p-3 rounded-lg"
           onChange={handleChange}
         />
-
         <input
           type="password"
           placeholder="Password"
@@ -62,15 +63,18 @@ export const SignUp = () => {
           className="bg-[#E0E0E0] outline-none text-[#121212] p-3 rounded-lg"
           onChange={handleChange}
         />
-
-        <button
-          disabled={loading}
-          className="text-[#f7d185] font-bold bg-[#f7d185] bg-opacity-30 px-6 py-3 rounded-md hover:bg-opacity-50"
-        >
-          {loading ? "Loading..." : "Sign up"}
-        </button>
-        <OAuth/>
+        
+        <div className="flex justify-between items-center gap-4 w-full">
+          <button
+            disabled={loading}
+            className="text-[#f7d185] font-bold bg-[#f7d185] bg-opacity-30 px-6 py-3 rounded-md hover:bg-opacity-50 flex-1"
+          >
+            {loading ? "Loading..." : "Sign up"}
+          </button>
+          <OAuth className="flex-1" />
+        </div>
       </form>
+
       <div className="flex gap-2 mt-5">
         <p>Have an account?</p>
         <Link to="/sign-in">
