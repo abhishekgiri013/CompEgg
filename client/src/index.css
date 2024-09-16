@@ -16,3 +16,20 @@ body,
   background-color: #1c1c1c;
   color: #e0eee0;
 }
+
+@keyframes scroll {
+  0% {
+      transform: translateY(0);
+  }
+  100% {
+      transform: translateY(-100%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+.relative:hover .animate-scroll {
+  animation-play-state: paused;
+}
