@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-import { Pie } from 'react-chartjs-2';
+import Stack from '@mui/material/Stack';
+import { PieChart } from '@mui/x-charts/PieChart';
+import Tooltip from '@mui/material/Tooltip';
 
 const removeDuplicates = (submissions) => {
     if (!Array.isArray(submissions)) {
@@ -19,16 +21,22 @@ const LeetCodeAnalysis = ({ leetCodeData }) => {
         console.log(leetCodeData);
     }, [leetCodeData]);
 
-    // Ensure leetCodeData and recentSubmissions are defined and valid
     const recentSubmissions = leetCodeData?.recentSubmissions || [];
     const uniqueRecentSubmissions = removeDuplicates(recentSubmissions);
     const defaultlink = "https://assets.leetcode.com/static_assets/marketing/2024-100-lg.png";
+
+    const pieData = [
+        { label: 'Easy', value: leetCodeData?.easy || 0 },
+        { label: 'Medium', value: leetCodeData?.medium || 0 },
+        { label: 'Hard', value: leetCodeData?.hard || 0 },
+    ];
+
+    const pieColors = ['#FF6384', '#36A2EB', '#FFCE56'];
 
     return (
         <div className="p-3 min-h-screen">
             {/* Header Section */}
             <div className="mb-8">
-                {/* Rank and Languages Used in Same Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     {/* Rank and Solved Questions */}
                     <div className="bg-[#353535] p-4 rounded-lg shadow-md">
@@ -54,20 +62,37 @@ const LeetCodeAnalysis = ({ leetCodeData }) => {
 
             {/* Charts and Badges Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Pie Chart - Total Problems Solved */}
+                {/* Enhanced Pie Chart - Total Problems Solved */}
                 <div className="bg-[#353535] p-4 rounded-lg shadow-md">
                     <h4 className="text-xl font-semibold mb-4 text-[#f8c55d]">Problems Solved</h4>
-                    <Pie
-                        data={{
-                            labels: ['Easy', 'Medium', 'Hard'],
-                            datasets: [
-                                {
-                                    data: [leetCodeData?.easy || 0, leetCodeData?.medium || 0, leetCodeData?.hard || 0],
-                                    backgroundColor: ['#FF6384', '#36A2EB', '#99ff99'],
-                                },
-                            ],
-                        }}
-                    />
+                    <Stack direction="row" justifyContent="center">
+                        <Tooltip title="Problems Solved Breakdown" arrow>
+                            <div>
+                                <PieChart
+                                    series={[
+                                        {
+                                            paddingAngle: 5,
+                                            innerRadius: 60,
+                                            outerRadius: 80,
+                                            data: pieData.map((item, index) => ({
+                                                label: item.label,
+                                                value: item.value,
+                                                color: pieColors[index],
+                                            })),
+                                        },
+                                    ]}
+                                    margin={{ top: 20, right: 5, left: 5, bottom: 20 }}
+                                    width={250}
+                                    height={250}
+                                    legend={{ hidden: true }}
+                                    animation={{
+                                        easing: 'easeInOutCubic',
+                                        duration: 1000,
+                                    }}
+                                />
+                            </div>
+                        </Tooltip>
+                    </Stack>
                 </div>
 
                 {/* Badges */}
@@ -104,3 +129,4 @@ const LeetCodeAnalysis = ({ leetCodeData }) => {
 };
 
 export default LeetCodeAnalysis;
+

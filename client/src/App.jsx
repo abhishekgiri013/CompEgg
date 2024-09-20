@@ -7,7 +7,7 @@ import { Header } from './componets/Header';
 import Dashboard from './pages/DashBoard';
 import Profile from './pages/Profile';
 import PrivateRoute from './componets/privateRoute';
-
+import AboutUs from './pages/AboutUs';
 
 
 const App = () => {
@@ -20,8 +20,8 @@ const App = () => {
          <Route path='/sign-up' element ={<SignUp/>}/>
          <Route path='/dashboard' element ={<Dashboard/>}/>
          <Route element={<PrivateRoute/>}>
-
          <Route path='/profile' element={<Profile/>}/>
+         <Route path='/about' element ={<AboutUs/>}/>
          </Route>
       </Routes>
    </BrowserRouter>
