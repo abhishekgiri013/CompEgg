@@ -3,7 +3,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 
 export const Header = () => {
-  const {currentUser} = useSelector(state => state.user);
+  const { currentUser } = useSelector(state => state.user);
   return (
     <div className='sticky top-0 bg-[#313030] text-[#f7d185] shadow-md z-50'>
       <div className='flex justify-between items-center  max-w-7xl mx-auto p-3'>
@@ -14,19 +14,22 @@ export const Header = () => {
           </div>
         </Link>
         <ul className='flex gap-4'>
-          <Link to="/dashboard">
-            <li>Dashboard</li>
-          </Link>
           <Link to="/">
             <li>Home</li>
           </Link>
+          <Link to="/about">
+            <li>About</li>
+          </Link>
+          <Link to="/dashboard">
+            <li>Dashboard</li>
+          </Link>
           <Link to="/profile">
-          { currentUser ? (
-            <img src={currentUser.profilePicture} alt='profile' className='h-7 w-7 rounded-full object-cover'/>
-          ):(
+            {currentUser ? (
+              <img src={currentUser.profilePicture} alt='profile' className='h-7 w-7 rounded-full object-cover' />
+            ) : (
 
-            <li>Sign In</li>
-          )}
+              <li>Sign In</li>
+            )}
           </Link>
         </ul>
       </div>

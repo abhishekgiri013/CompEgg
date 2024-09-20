@@ -239,10 +239,7 @@ export const Home = () => {
           />
         </div>
       </motion.section>
-
-
-
-
+      
       {/* Footer Section */}
       <motion.footer
         ref={refFooter}

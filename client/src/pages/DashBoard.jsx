@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Bar, Doughnut, Pie } from 'react-chartjs-2';
-import 'chart.js/auto'; // Required to enable charts
+import { Doughnut, Pie } from 'react-chartjs-2';
+import 'chart.js/auto';
 import LeetCodeAnalysis from '../analysis/LeetCodeAnalysis';
 import loader from "/assets/loader.gif";
+import HeatMap from '../componets/HeatMap';
 
 const Dashboard = ({ name = 'user' }) => {
+
   const [leetCodeData, setLeetCodeData] = useState({
     totalSolved: 0,
     easy: 0,
@@ -16,6 +18,7 @@ const Dashboard = ({ name = 'user' }) => {
     badges: [],
     recentSubmissions: [],
     languages: [],
+    submissionTimeline: {},
   });
   const [gfgData, setGfgData] = useState({ totalProblemsSolved: 0, school: 0, basic: 0, hard: 0 });
   const [codeforcesData, setCodeforcesData] = useState({ totalSolved: 0, contests: 0, rank: 0 });
@@ -59,23 +62,82 @@ const Dashboard = ({ name = 'user' }) => {
     }
   };
 
+  // const fetchLeetCodeData = async (id) => {
+  //   try {
+     
+  //     const submissionResponse = await fetch(`https://alfa-leetcode-api.onrender.com/userProfile/${id}`);
+  //     const profileResponse = await fetch(`https://alfa-leetcode-api.onrender.com/${id}`);
+  //     const timelineResponse = await fetch(`https://alfa-leetcode-api.onrender.com/userProfileCalendar?username=${id}&year=2024`);
+  //     const langSolvedResponse = await fetch(`https://alfa-leetcode-api.onrender.com/languageStats?username=${id}`);
+  //     const badgesResponse = await fetch(`https://alfa-leetcode-api.onrender.com/${id}/badges`);
+  //     // const userdataleetcode = await fetch(`https://alfa-leetcode-api.onrender.com/userProfile/${id}`);
+
+  //     if (!badgesResponse.ok || !langSolvedResponse.ok || !userdataleetcode.ok) throw new Error('Network response was not ok');
+
+  //     const profileData = await profileResponse.json();
+  //     const submissionData = await submissionResponse.json();
+  //     const timelineData = await timelineResponse.json();
+
+  //     const langSolvedData = await langSolvedResponse.json();
+  //     const badgesData = await badgesResponse.json();
+  //     const userData = await userdataleetcode.json();
+
+  //     console.log('Canlender Data:', userData.submissionCalendar);
+  //     // console.log('Profile Data:', profileData);
+
+  //     return {
+  //       platform: 'LeetCode',
+  //       data: {
+  //         totalSolved: userData.totalSolved || 0,
+  //         easy: userData.easySolved || 0,
+  //         medium: userData.mediumSolved || 0,
+  //         hard: userData.hardSolved || 0,
+  //         ranking: userData.ranking || 0,
+  //         recentSubmissions: userData.recentSubmissions || [],
+  //         // acceptanceRate: profileData.acceptanceRate || 0,
+  //         languages: langSolvedData.matchedUser.languageProblemCount || [],
+  //         badges: badgesData.badges || [],
+  //         badgesCount: badgesData.badgesCount || 0,
+  //         submissionTimeline: userData.submissionCalendar || {},
+  //         totalSubmissions: userData.totalSubmissions.find(submission => submission.difficulty === "All").submissions || 0,
+  //       },
+  //     };
+  //   } catch (error) {
+  //     console.error('Error fetching LeetCode data:', error);
+  //     return {
+  //       platform: 'LeetCode', data: {
+  //         totalSolved: 0, easy: undefined, medium: undefined, hard: undefined,
+  //         ranking: undefined,
+  //         recentSubmissions: undefined,
+  //         languages: undefined,
+  //         badges: undefined,
+  //         badgesCount: undefined,
+  //         submissionTimeline: undefined,
+  //         totalSubmissions: undefined,
+  //       }
+  //     };
+  //   }
+  // };
+
   const fetchLeetCodeData = async (id) => {
     try {
+
       const profileResponse = await fetch(`https://alfa-leetcode-api.onrender.com/${id}`);
       const langSolvedResponse = await fetch(`https://alfa-leetcode-api.onrender.com/languageStats?username=${id}`);
       const submissionResponse = await fetch(`https://alfa-leetcode-api.onrender.com/userProfile/${id}`);
       const badgesResponse = await fetch(`https://alfa-leetcode-api.onrender.com/${id}/badges`);
-      const contestResponse = await fetch(`https://alfa-leetcode-api.onrender.com/${id}/contest/history`);
+      const timelineResponse = await fetch(`https://alfa-leetcode-api.onrender.com/userProfileCalendar?username=${id}&year=2024`);
 
-      if (!submissionResponse.ok || !profileResponse.ok || !badgesResponse.ok || !langSolvedResponse.ok || !contestResponse.ok) throw new Error('Network response was not ok');
+      if (!submissionResponse.ok || !profileResponse.ok || !badgesResponse.ok || !langSolvedResponse.ok || !timelineResponse.ok) throw new Error('Network response was not ok');
 
       const profileData = await profileResponse.json();
       const langSolvedData = await langSolvedResponse.json();
       const submissionData = await submissionResponse.json();
       const badgesData = await badgesResponse.json();
-      const contestData = await contestResponse.json();
+      const timelineData = await timelineResponse.json();
 
       console.log('Profile Data:', profileData);
+      console.log('Canlender Data:', timelineData.data.matchedUser.userCalendar);
 
       return {
         platform: 'LeetCode',
@@ -86,12 +148,10 @@ const Dashboard = ({ name = 'user' }) => {
           hard: submissionData.hardSolved || 0,
           ranking: profileData.ranking || 0,
           recentSubmissions: submissionData.recentSubmissions || { "error": "no data" },
-          // acceptanceRate: profileData.acceptanceRate || 0,
           languages: langSolvedData.matchedUser.languageProblemCount || [],
           badges: badgesData.badges || [],
           badgesCount: badgesData.badgesCount || 0,
-          contestCount: contestData.count || 0,
-          contestHistory: contestData.contestHistory || 0,
+          submissionTimeline: timelineData.data.matchedUser.userCalendar || {},
         },
       };
     } catch (error) {
@@ -104,8 +164,7 @@ const Dashboard = ({ name = 'user' }) => {
           languages: undefined,
           badges: undefined,
           badgesCount: undefined,
-          contestCount: undefined,
-          contestHistory: undefined
+          submissionTimeline: undefined,
         }
       };
     }
@@ -215,6 +274,7 @@ const Dashboard = ({ name = 'user' }) => {
           >
             Fetch Data
           </button>
+
         </form>
       )}
 
@@ -251,10 +311,18 @@ const Dashboard = ({ name = 'user' }) => {
                 <p className="mb-2 font-light">Total Solved</p>
                 <h2 className="text-xl mb-2 text-[#f8c55d]">HackerRank</h2>
               </div>
+
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Heatmap timeline */}
+            <div className='flex justify-center'>
+              {leetCodeData?.submissionTimeline && (
+                <HeatMap userCalendar={leetCodeData.submissionTimeline} />
+              )}
+            </div>
 
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               {/* LeetCode Stats */}
               <div className="bg-[#121212] shadow-lg p-6 rounded-lg">
                 <h3 className="text-xl font-bold text-[#f7d185] mb-2">LeetCode Stats</h3>
@@ -262,7 +330,7 @@ const Dashboard = ({ name = 'user' }) => {
                   leetCodeData && leetCodeData.ranking !== undefined && leetCodeData.totalSolved !== undefined ? (
                     <LeetCodeAnalysis leetCodeData={leetCodeData} />
                   ) : (
-                    <h4>Invalid user ID or data not found</h4>
+                    <h4>Invalid user ID | Server Error</h4>
                   )
                 ) : (
                   <h4>User ID not provided</h4>
@@ -286,7 +354,7 @@ const Dashboard = ({ name = 'user' }) => {
                       }}
                     />
                   ) : (
-                    <h4>Invalid user ID or data not found</h4>
+                    <h4>Invalid user ID | Server Error</h4>
                   )
                 ) : (
                   <h4>User ID not provided</h4>
@@ -310,7 +378,7 @@ const Dashboard = ({ name = 'user' }) => {
                       }}
                     />
                   ) : (
-                    <h4>Invalid user ID or data not found</h4>
+                    <h4>Invalid user ID | Server Error</h4>
                   )
                 ) : (
                   <h4>User ID not provided</h4>
@@ -334,7 +402,7 @@ const Dashboard = ({ name = 'user' }) => {
                       }}
                     />
                   ) : (
-                    <h4>Invalid user ID or data not found</h4>
+                    <h4>Invalid user ID | Server Error</h4>
                   )
                 ) : (
                   <h4>User ID not provided</h4>
