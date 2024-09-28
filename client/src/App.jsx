@@ -6,7 +6,7 @@ import { SignUp } from './pages/SignUp';
 import { Header } from './componets/Header';
 import Dashboard from './pages/DashBoard';
 import Profile from './pages/Profile';
-import PrivateRoute from './componets/privateRoute';
+import PrivateRoute from './componets/PrivateRoute';
 import AboutUs from './pages/AboutUs';
 
 
