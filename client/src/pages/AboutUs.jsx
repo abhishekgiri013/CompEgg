@@ -53,7 +53,7 @@ const AboutUs = () => {
           >
             <div className="flex flex-col items-center">
               <motion.img
-                src="your-profile-pic-url"
+                src="p3.webp"
                 alt="Gayatri Kadam"
                 className="w-48 h-48 rounded-full border-4 border-[#f7d185] object-cover shadow-md mb-6"
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -115,7 +115,7 @@ const AboutUs = () => {
           >
             <div className="flex flex-col items-center">
               <motion.img
-                src="your-classmate-profile-pic-url" 
+                src="p1.webp" 
                 alt="Abhishek Giri"
                 className="w-48 h-48 rounded-full border-4 border-[#f7d185] object-cover shadow-md mb-6"
                 initial={{ opacity: 0, scale: 0.9 }}

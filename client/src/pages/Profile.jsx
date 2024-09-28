@@ -13,6 +13,10 @@ import {
   updateUserStart,
   updateUserSuccess,
   updateUserFailure,
+  deleteUserStart,
+  deleteUserFailure,
+  deleteUserSuccess,
+  signOut,
 } from "../redux/user/userSlice";
 import { fadeContainer, slideUpItem, scaleButton } from "../animations/variants";
 
@@ -84,7 +88,32 @@ export default function Profile() {
   };
 
   const profilePicture = formData.profilePicture || currentUser.profilePicture;
+  const handleDeleteAccount = async () => {
+    try {
+      dispatch(deleteUserStart());
+      const res =await fetch(`/backend/user/delete/${currentUser._id}`,{
+        method:'DELETE',
+      });
+      const data = await res.json();
+      if(data.success === false){
+        dispatch(deleteUserFailure(data));
+        return;
 
+      }
+      dispatch(deleteUserSuccess(data));
+    } catch (error) {
+        dispatch(deleteUserFailure(error));
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await fetch('/backend/auth/signout');
+       dispatch(signOut());
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <motion.div
       className="p-4 max-w-lg mx-auto bg-[#1c1c1b] rounded-lg shadow-lg"
@@ -169,10 +198,10 @@ export default function Profile() {
         </motion.button>
       </motion.form>
       <motion.div className="flex justify-between mt-4" variants={slideUpItem}>
-        <span className="text-red-500 cursor-pointer bg-[#262222] my-4 rounded-lg p-2 font-semibold">
+        <span onClick={handleDeleteAccount} className="text-red-500 cursor-pointer bg-[#262222] my-4 rounded-lg p-2 font-semibold">
           Delete Account
         </span>
-        <span className="text-red-500 cursor-pointer bg-[#262222] my-4 rounded-lg p-2 font-semibold">
+        <span onClick={handleSignOut} className="text-red-500 cursor-pointer bg-[#262222] my-4 rounded-lg p-2 font-semibold">
           Sign Out
         </span>
       </motion.div>
