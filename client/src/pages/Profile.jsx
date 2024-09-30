@@ -88,41 +88,42 @@ export default function Profile() {
   };
 
   const profilePicture = formData.profilePicture || currentUser.profilePicture;
+
   const handleDeleteAccount = async () => {
     try {
       dispatch(deleteUserStart());
-      const res =await fetch(`/backend/user/delete/${currentUser._id}`,{
-        method:'DELETE',
+      const res = await fetch(`/backend/user/delete/${currentUser._id}`, {
+        method: "DELETE",
       });
       const data = await res.json();
-      if(data.success === false){
+      if (data.success === false) {
         dispatch(deleteUserFailure(data));
         return;
-
       }
       dispatch(deleteUserSuccess(data));
     } catch (error) {
-        dispatch(deleteUserFailure(error));
+      dispatch(deleteUserFailure(error));
     }
   };
 
   const handleSignOut = async () => {
     try {
       await fetch('/backend/auth/signout');
-       dispatch(signOut());
+      dispatch(signOut());
     } catch (error) {
       console.log(error);
     }
-  }
+  };
+
   return (
     <motion.div
-      className="p-4 max-w-lg mx-auto bg-[#1c1c1b] rounded-lg shadow-lg"
+      className="p-6 max-w-lg w-full sm:w-10/12 md:w-8/12 lg:w-6/12 xl:w-5/12 mx-auto bg-[#1c1c1b] rounded-lg shadow-lg"
       variants={fadeContainer}
       initial="hidden"
       animate="visible"
     >
       <motion.h1
-        className="text-3xl font-bold text-center my-7 text-[#f7d185]"
+        className="text-3xl font-bold text-center my-7 text-[#f7d185] sm:text-2xl"
         variants={slideUpItem}
       >
         Profile
@@ -142,7 +143,7 @@ export default function Profile() {
         <motion.img
           src={profilePicture}
           alt="profile"
-          className="h-24 w-24 self-center cursor-pointer rounded-full object-cover mt-2 border-2 border-[#f7d185]"
+          className="h-24 w-24 sm:h-20 sm:w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 self-center cursor-pointer rounded-full object-cover mt-2 border-2 border-[#f7d185]"
           onClick={() => fileRef.current.click()}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -167,7 +168,7 @@ export default function Profile() {
           type="text"
           id="username"
           placeholder="Username"
-          className="bg-[#121212] text-[#E0E0E0] rounded-lg p-3 border border-[#f7d185]"
+          className="bg-[#121212] text-[#E0E0E0] rounded-lg p-3 border border-[#f7d185] w-full sm:p-2 md:p-3"
           onChange={handleChange}
           variants={slideUpItem}
         />
@@ -176,7 +177,7 @@ export default function Profile() {
           type="email"
           id="email"
           placeholder="Email"
-          className="bg-[#121212] text-[#E0E0E0] rounded-lg p-3 border border-[#f7d185]"
+          className="bg-[#121212] text-[#E0E0E0] rounded-lg p-3 border border-[#f7d185] w-full sm:p-2 md:p-3"
           onChange={handleChange}
           variants={slideUpItem}
         />
@@ -184,12 +185,12 @@ export default function Profile() {
           type="password"
           id="password"
           placeholder="Password"
-          className="bg-[#121212] text-[#E0E0E0] rounded-lg p-3 border border-[#f7d185]"
+          className="bg-[#121212] text-[#E0E0E0] rounded-lg p-3 border border-[#f7d185] w-full sm:p-2 md:p-3"
           onChange={handleChange}
           variants={slideUpItem}
         />
         <motion.button
-          className="text-white p-3 rounded-lg bg-gradient-to-r from-green-400 to-green-700 hover:opacity-90 disabled:opacity-50"
+          className="text-white p-3 rounded-lg bg-gradient-to-r from-green-400 to-green-700 hover:opacity-90 disabled:opacity-50 w-full sm:p-2 md:p-3"
           disabled={loading}
           variants={scaleButton}
           whileHover="hover"
@@ -197,18 +198,27 @@ export default function Profile() {
           {loading ? "Loading..." : "Update Profile"}
         </motion.button>
       </motion.form>
-      <motion.div className="flex justify-between mt-4" variants={slideUpItem}>
-        <span onClick={handleDeleteAccount} className="text-red-500 cursor-pointer bg-[#262222] my-4 rounded-lg p-2 font-semibold">
+      <motion.div
+        className="flex flex-col sm:flex-row justify-between mt-4 gap-2"
+        variants={slideUpItem}
+      >
+        <span
+          onClick={handleDeleteAccount}
+          className="text-red-500 cursor-pointer bg-[#262222] my-4 rounded-lg p-2 font-semibold flex-1 text-center mx-1"
+        >
           Delete Account
         </span>
-        <span onClick={handleSignOut} className="text-red-500 cursor-pointer bg-[#262222] my-4 rounded-lg p-2 font-semibold">
+        <span
+          onClick={handleSignOut}
+          className="text-red-500 cursor-pointer bg-[#262222] my-4 rounded-lg p-2 font-semibold flex-1 text-center mx-1"
+        >
           Sign Out
         </span>
       </motion.div>
-      <motion.p className="text-red-400 mt-5" variants={slideUpItem}>
+      <motion.p className="text-red-400 mt-5 text-center" variants={slideUpItem}>
         {error && "Something went wrong"}
       </motion.p>
-      <motion.p className="text-green-500 mt-5" variants={slideUpItem}>
+      <motion.p className="text-green-500 mt-5 text-center" variants={slideUpItem}>
         {updateSuccess && "User is updated successfully"}
       </motion.p>
     </motion.div>

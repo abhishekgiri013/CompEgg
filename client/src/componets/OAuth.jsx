@@ -12,7 +12,7 @@ export default function OAuth() {
       const provider = new GoogleAuthProvider();
       const auth = getAuth(app);
       const result = await signInWithPopup(auth, provider);
-      const res = await fetch("backend/auth/google", {
+      const res = await fetch("/backend/auth/google", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,7 +24,6 @@ export default function OAuth() {
         }),
       });
       const data = await res.json();
-      console.log(data);
       dispatch(signInSuccess(data));
       navigate("/");
     } catch (error) {
@@ -35,7 +34,7 @@ export default function OAuth() {
     <button
       type="button"
       onClick={handleGoogleClick}
-      className="text-[#f7d185] font-bold bg-[#f7d185] bg-opacity-30 px-6 py-3 rounded-md hover:bg-opacity-50 uppercase"
+      className="text-[#f7d185] font-bold bg-[#f7d185] bg-opacity-30 px-6 py-3 rounded-md hover:bg-opacity-50 uppercase w-full"
     >
       Continue with Google
     </button>

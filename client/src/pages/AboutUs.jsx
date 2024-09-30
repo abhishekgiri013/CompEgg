@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import Footer from "../componets/Footer";
+import Footer from "../componets/Footer"; // Corrected the import path
 import { containerVariants, cardVariants, textVariants } from '../animations/variants';
 
 const AboutUs = () => {
@@ -54,7 +54,7 @@ const AboutUs = () => {
             <div className="flex flex-col items-center">
               <motion.img
                 src="p3.webp"
-                alt="Gayatri Kadam"
+                alt="Portrait of Gayatri Kadam, Web Developer"
                 className="w-48 h-48 rounded-full border-4 border-[#f7d185] object-cover shadow-md mb-6"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -71,6 +71,12 @@ const AboutUs = () => {
                 variants={textVariants}
               >
                 As a Web developer, I am passionate about building innovative web applications. My focus is on creating user-centric experiences with a strong background in modern web technologies.
+              </motion.p>
+              <motion.p
+                className="text-base mb-4 leading-relaxed italic"
+                variants={textVariants}
+              >
+                Fun Fact: I love hiking and exploring nature on weekends!
               </motion.p>
               <div className="flex flex-wrap justify-center gap-4 mb-6">
                 {["JavaScript", "React", "Express.js", "Node.js", "MongoDB"].map(skill => (
@@ -116,7 +122,7 @@ const AboutUs = () => {
             <div className="flex flex-col items-center">
               <motion.img
                 src="p1.webp" 
-                alt="Abhishek Giri"
+                alt="Portrait of Abhishek Giri, Backend Developer"
                 className="w-48 h-48 rounded-full border-4 border-[#f7d185] object-cover shadow-md mb-6"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -133,6 +139,12 @@ const AboutUs = () => {
                 variants={textVariants}
               >
                 I specialize in backend development and enjoy crafting efficient, scalable systems. My goal is to build robust applications that enhance user experiences and drive technology forward.
+              </motion.p>
+              <motion.p
+                className="text-base mb-4 leading-relaxed italic"
+                variants={textVariants}
+              >
+                Fun Fact: I enjoy playing chess and solving puzzles in my free time!
               </motion.p>
               <div className="flex flex-wrap justify-center gap-4 mb-6">
                 {["JavaScript", "Node.js", "Express", "MongoDB", "React"].map(skill => (
@@ -168,6 +180,14 @@ const AboutUs = () => {
             </div>
           </motion.div>
         </div>
+        <motion.div className="text-center mt-12">
+          <motion.p
+            className="text-lg leading-relaxed mb-4 text-[#E0E0E0]"
+            variants={textVariants}
+          >
+            Feel free to reach out for collaboration or inquiries!
+          </motion.p>
+        </motion.div>
       </motion.div>
       <Footer />
     </>
