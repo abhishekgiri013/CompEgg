@@ -1,43 +1,35 @@
+# 🌟 CompEgg: Your Competitive Programming Dashboard
 
-
----
-
-## ComEgg Project
+Welcome to **CompEgg**, the ultimate web application that centralizes competitive programming data from renowned platforms like LeetCode, GeeksforGeeks, Codeforces, and HackerRank. Designed for both aspiring coders and seasoned programmers, CompEgg empowers you with real-time insights and analytics to elevate your competitive programming journey!
 
 This is a MERN stack project for building a web application with a client-side (frontend) using Vite, React, and Tailwind CSS, and a server-side (backend) using Express, MongoDB, and Mongoose.
 
 ---
 
-### File Structure
+## 🚀 Features
 
-```
-ComEgg/
-├── backend/
-│   ├── controllers/
-│   │   └── userController.js
-│   ├── models/
-│   │   └── user.model.js
-│   ├── index.js
-│   └── package.json
-│
-├── client/
-│   ├── src/
-│   │   ├── components/
-│   │   │   └── Header.jsx
-│   │   ├── pages/
-│   │   │   ├── Home.jsx
-│   │   │   ├── SignIn.jsx
-│   │   │   └── SignUp.jsx
-│   │   └── App.jsx
-│   ├── public/
-│   ├── index.html
-│   ├── package.json
-│   └── tailwind.config.js
-│
-├── node_modules/
-├── package.json
-└── README.md
-```
+- **Multi-Platform Integration**: Seamlessly access and analyze your coding stats from various platforms, all in one dynamic dashboard.
+- **Interactive Dashboard**: Enjoy a user-friendly interface that displays comprehensive metrics and performance analytics at a glance.
+- **Real-Time Data Fetching**: Stay updated with live data retrieved through efficient API calls, ensuring you always have the latest stats.
+- **Responsive Design**: Optimized for both desktop and mobile devices, CompEgg is accessible anytime, anywhere.
+- **Heatmap Visualization**: Dive deep into your activity timeline with an interactive heatmap built using D3.js, showcasing your coding journey over time.
+
+---
+
+## 🔧 Technologies Used
+
+- **Frontend**: React, Tailwind CSS, Axios, React-toolkit, React-persist
+- **Data Visualization**: D3.js, mui-charts
+- **APIs**:
+  - LeetCode Stats API
+  - GeeksforGeeks API
+  - Codeforces API
+  - HackerRank API
+- **Backend and Databases**: Node, Express, MongoDB, Firebase-Auth
+
+---
+
+### 🔗[Live Link](https://compegg.onrender.com)
 
 ---
 
@@ -157,10 +149,10 @@ ComEgg/
 
 ---
 
-### Features
+## 🤝 Contributing
 
-- User authentication (signup, login)
-- Database connection to MongoDB
-- Responsive user interface with React and Tailwind CSS
+We welcome contributions from the community! If you have suggestions for improvements or want to report a bug, please create an issue or submit a pull request. Let’s collaborate to make CompEgg even better!
 
----
+## 📹💻 ScreenShots
+
+
