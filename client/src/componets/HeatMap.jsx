@@ -185,7 +185,7 @@ const HeatMap = ({ userCalendar }) => {
     }));
 
     // Set up SVG dimensions
-    const rectSize = 20; // Size of heatmap squares
+    const rectSize = 23; // Size of heatmap squares
     const gap = 6; // Gap between squares
     const monthGap = 30; // Gap between months
 

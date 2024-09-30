@@ -46,37 +46,37 @@ export const SignUp = () => {
           type="text"
           placeholder="Username"
           id="username"
-          className="bg-[#E0E0E0] outline-none text-[#121212] p-3 rounded-lg"
+          className="bg-[#E0E0E0] outline-none text-[#121212] p-3 rounded-lg w-full"
           onChange={handleChange}
         />
         <input
           type="text"
           placeholder="Email"
           id="email"
-          className="bg-[#E0E0E0] outline-none text-[#121212] p-3 rounded-lg"
+          className="bg-[#E0E0E0] outline-none text-[#121212] p-3 rounded-lg w-full"
           onChange={handleChange}
         />
         <input
           type="password"
           placeholder="Password"
           id="password"
-          className="bg-[#E0E0E0] outline-none text-[#121212] p-3 rounded-lg"
+          className="bg-[#E0E0E0] outline-none text-[#121212] p-3 rounded-lg w-full"
           onChange={handleChange}
         />
         
-        <div className="flex justify-between items-center gap-4 w-full">
+        <div className="flex flex-col md:flex-row gap-4 w-full">
           <button
             disabled={loading}
-            className="text-[#f7d185] font-bold bg-[#f7d185] bg-opacity-30 px-6 py-3 rounded-md hover:bg-opacity-50 flex-1"
+            className="text-[#f7d185] font-bold bg-[#f7d185] bg-opacity-30 px-6 py-3 rounded-md hover:bg-opacity-50 flex-1 whitespace-nowrap"
           >
-            {loading ? "Loading..." : "Sign up"}
+            {loading ? "Loading..." : "Sign Up"}
           </button>
           <OAuth className="flex-1" />
         </div>
       </form>
 
-      <div className="flex gap-2 mt-5">
-        <p>Have an account?</p>
+      <div className="flex gap-2 mt-5 flex-col md:flex-row justify-center items-center">
+        <p className="mr-2">Have an account?</p>
         <Link to="/sign-in">
           <span className="text-[#f7d185]">Sign In</span>
         </Link>
