@@ -33,6 +33,28 @@ This is a MERN stack project for building a web application with a client-side (
 
 ---
 
+## 📹💻 ScreenShots
+
+![Screenshot 2024-10-01 162137](https://github.com/user-attachments/assets/c37042d6-25df-4c24-862c-f8aa758c4b18)
+
+![Screenshot 2024-10-01 162254](https://github.com/user-attachments/assets/93c9149f-f09b-45e7-8ad2-e596f1c6ccc5)
+
+![Screenshot 2024-10-01 162337](https://github.com/user-attachments/assets/417c4cb2-74ba-48bf-b9d7-b6caafb976eb)
+
+![Screenshot 2024-10-01 162505](https://github.com/user-attachments/assets/7c0577d8-95da-49f1-92d9-6c51174d154c)
+
+![Screenshot 2024-10-01 162527](https://github.com/user-attachments/assets/0f3671fb-8feb-46b5-b1e7-0832ed88cb14)
+
+![Screenshot 2024-10-01 162547](https://github.com/user-attachments/assets/8710a87e-8318-4dcd-874c-757c9a06dda5)
+
+![Screenshot 2024-10-01 162640](https://github.com/user-attachments/assets/5a85f0b3-7af1-47ba-8e20-74de07843d49)
+
+![Screenshot 2024-10-01 162710](https://github.com/user-attachments/assets/34f4a246-979d-4517-ab4f-cdfb3fbfb659)
+
+![Screenshot 2024-10-01 162722](https://github.com/user-attachments/assets/197cd536-464f-4a5b-8db7-f766c4095842)
+
+---
+
 ### Installation and Setup
 
 #### Prerequisites
@@ -153,6 +175,5 @@ This is a MERN stack project for building a web application with a client-side (
 
 We welcome contributions from the community! If you have suggestions for improvements or want to report a bug, please create an issue or submit a pull request. Let’s collaborate to make CompEgg even better!
 
-## 📹💻 ScreenShots
 
 
