@@ -33,7 +33,8 @@ const LeetCodeAnalysis = ({ leetCodeData }) => {
         { label: 'Hard', value: leetCodeData?.hard || 0 },
     ];
 
-    const pieColors = ['#FF6384', '#36A2EB', '#FFCE56'];
+    const pieColors = [ '#FF9800','#FF6F61', '#FFC107'];
+    // const pieColors = ['#8D6E63', '#D77D4C', '#B0BEC5'];
 
     return (
         <div className="p-3 min-h-screen">
@@ -55,7 +56,7 @@ const LeetCodeAnalysis = ({ leetCodeData }) => {
                         <h4 className="text-xl font-semibold mb-2 text-[#f8c55d]">Stats</h4>
                         <p className="text-lg">Rank: <span className='font-bold text-[#f7d185]'>{leetCodeData?.ranking || 'N/A'}</span></p>
                         <p className="text-lg">Solved Ques: <span className='font-bold text-[#f7d185]'>{leetCodeData?.totalSolved || 0}</span></p>
-                        <p className="text-lg">Solved Ques: <span className='font-bold text-[#f7d185]'>{leetCodeData?.acceptanceRate || 0}</span></p>
+                        <p className="text-lg">Acceptance Rate: <span className='font-bold text-[#f7d185]'>{leetCodeData?.acceptanceRate || 0}</span></p>
                         {/* <p className="text-lg">Easy Ques: <span className='font-bold text-[#f7d185]'>{leetCodeData?.easy || 0}</span></p>
                         <p className="text-lg">Medium Ques: <span className='font-bold text-[#f7d185]'>{leetCodeData?.medium || 0}</span></p> */}
                         {/* <p className="text-lg">Hard Ques: <span className='font-bold text-[#f7d185]'>{leetCodeData?.hard || 0}</span></p> */}
