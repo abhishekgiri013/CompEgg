@@ -76,7 +76,7 @@ const AboutUs = () => {
                 className="text-base mb-4 leading-relaxed italic"
                 variants={textVariants}
               >
-                Fun Fact: I love hiking and exploring nature on weekends!
+                Fun Fact: Football is my escape and my passion!
               </motion.p>
               <div className="flex flex-wrap justify-center gap-4 mb-6">
                 {["JavaScript", "React", "Express.js", "Node.js", "MongoDB"].map(skill => (
